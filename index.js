@@ -28,9 +28,22 @@ client.on('message', message => {
   const command = args.shift().toLowerCase();
 
   // Let's go with a few common example commands! Feel free to delete or change those.
-  if (command === "test")
+  if (command === "status")
   {
-    message.channel.send("test")
+    if (message.author.id == config.god) {
+      client.user.setActivity(message.content.slice(config.prefix.length).slice(command.length))
+     message.channel.send("Activitatea bot-ului a fost modificata -> " + message.content.slice(config.prefix.length).slice(command.length))
+    }
+    else {
+      message.channel.send("EROARE: Permisiuni insuficiente !")
+    }
+  }
+  if (command === "avatar")
+  {
+    if (!message.mentions.users.first()) { message.channel.send('INFO: ' + config.prefix + 'avatar @persoana') }
+    else {
+    message.channel.send(message.mentions.users.first().displayAvatarURL())
+    }
   }
  
 });
