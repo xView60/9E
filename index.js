@@ -48,7 +48,7 @@ client.on('message', message => {
   if (command === "help") {
     message.author.send({
       embed: {
-        color: 3447003,
+        color: 3447002,
         author: {
           name: client.user.username,
           icon_url: client.user.avatarURL
